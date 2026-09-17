@@ -8,3 +8,10 @@ class Program
         Console.WriteLine("Hi User!");
     }
 }
+
+// Comment to end of line
+
+/* Multiline
+ comment
+
+*/
