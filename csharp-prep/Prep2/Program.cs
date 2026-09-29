@@ -26,7 +26,9 @@ class Program
             letterGrade = "D";
             }
         else
-            {letterGrade = "F";}
+            {
+                letterGrade = "F";
+            }
         if (grade >= 70)
         {
             Console.WriteLine($"Congratulations! You passed the class with an {letterGrade}");
