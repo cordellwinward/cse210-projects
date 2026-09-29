@@ -31,5 +31,6 @@ class Program
         double average = total / numList.Count;
         Console.WriteLine($"The sum is {total}. The average number is {average}. The highest is {highest}.");
     }
+    
 
 }
