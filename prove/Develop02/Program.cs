@@ -1,20 +1,22 @@
 using System;
 using System.Net;
+using System.Threading.Tasks.Dataflow;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop02 World!");
+        Menu myMenu = new Menu();
+
+        Journal myJournal = new Journal();
         int response = 0;
         while (response != 5){
-        Menu myMenu = new Menu();
         response = myMenu.ProcessMenu();
             switch(response)
             {
                 case 1:
-                    Console.WriteLine("Create");
                     // Call CreateJournalEntry()
+                    myJournal.CreateJournalEntry();
                     break;
                 case 2: 
                     Console.WriteLine("Display");
