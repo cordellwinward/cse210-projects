@@ -19,16 +19,23 @@ class Program
                     myJournal.CreateJournalEntry();
                     break;
                 case 2: 
-                    Console.WriteLine("Display");
+                    // Console.WriteLine("Display");
                     // call display Journal
+                    myJournal.DisplayJournal();
                     break;
                 case 3:
-                    Console.WriteLine("Save");
-                    // Call ReadFromFile
+                    // Console.WriteLine("save");
+                    //call write to file
+                    Console.WriteLine("What would you like to name your file?");
+                    string filename = Console.ReadLine();
+                    myJournal.WriteToFile(filename);
                     break;
                 case 4:
-                    Console.WriteLine("Write");
-                    //call write to file
+                    // Console.WriteLine("write");
+                    // Call ReadFromFile
+                    Console.WriteLine("What is your journals filename?");
+                    string file = Console.ReadLine();
+                    myJournal.ReadFromFile(file);
                     break;
             }
         }

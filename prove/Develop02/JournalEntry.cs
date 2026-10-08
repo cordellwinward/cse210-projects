@@ -22,4 +22,16 @@ class JournalEntry
         Console.WriteLine($"{_prompt}: ");
         _response = Console.ReadLine();
     }
+
+    public void CreateJournalEntryFromFile(string date, string prompt, string response)
+    {
+        _date = date;
+        _prompt = prompt;
+        _response = response;
+    }
+
+    public string CreateFileSystemString()
+    {
+        return $"{_date}#{_prompt}#{_response}";
+    }
 }
