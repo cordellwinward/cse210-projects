@@ -11,7 +11,13 @@ class Program
         Journal myJournal = new Journal();
         int response = 0;
         while (response != 5){
-        response = myMenu.ProcessMenu();
+        try{
+            response = myMenu.ProcessMenu();
+        }
+            catch (FormatException)
+            {
+                continue;
+            }
             switch(response)
             {
                 case 1:
@@ -33,10 +39,17 @@ class Program
                 case 4:
                     // Console.WriteLine("write");
                     // Call ReadFromFile
-                    Console.WriteLine("What is your journals filename?");
-                    string file = Console.ReadLine();
-                    myJournal.ReadFromFile(file);
-                    break;
+                    try {
+                        Console.WriteLine("What is your journals filename?");
+                        string file = Console.ReadLine();
+                        myJournal.ReadFromFile(file);
+                        break;
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        Console.WriteLine("That file doesn't exsist");
+                        break;
+                    }
             }
         }
 
