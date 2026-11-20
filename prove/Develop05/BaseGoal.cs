@@ -41,6 +41,20 @@ abstract class BaseGoal
         _points = int.Parse(Console.ReadLine());
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+    public bool GetComplete()
+    {
+        return _complete;
+    }
+
     public virtual string GetConsoleString()
     {
         string completeString = " ";
@@ -48,7 +62,7 @@ abstract class BaseGoal
         {
             completeString = "X";
         }
-        return $"{_goalType} [{completeString}] Goal Name: {_name} Description {_description} Points: {_points}";
+        return $"{_goalType} [{completeString}] Goal Name: {_name} Description: {_description} Points: {_points}";
     }
 
     public int MarkComplete()

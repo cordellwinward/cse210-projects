@@ -10,7 +10,7 @@ class SimpleGoal : BaseGoal
 
     public override int RecordEvent()
     {
-        // TODO !!!!
-        return 0;
+        MarkComplete();
+        return GetPoints();
     }
 }

@@ -19,6 +19,9 @@ class Program
         bool program_running = true;
         while (program_running)
         {
+        Console.WriteLine();
+        goals.DisplayPoints();
+        Console.WriteLine();
         int mainMenuChoice = menu.DisplayMainMenu();
         switch (mainMenuChoice)
             {
@@ -49,7 +52,7 @@ class Program
                 case 5:
                     {
                         // Record Event
-
+                        goals.RecordEvent();
                         break;
                     }
                 case 6:
@@ -59,8 +62,6 @@ class Program
                         break;
                     }
             }
-
-        // int GoalMenuTest = menu.DisplayGoalTypeMenu();
             
         }
     }
