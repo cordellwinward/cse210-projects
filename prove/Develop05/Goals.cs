@@ -39,6 +39,7 @@ class Goals
             case 2:
                 {
                     // Eternal Goal
+                    newGoal = new EternalGoal();
                     break;
                 }
             case 3:
