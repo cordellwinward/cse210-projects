@@ -45,6 +45,7 @@ class Goals
             case 3:
                 {
                     // Checklist Goal
+                    newGoal = new ChecklistGoal();
                     break;
                 }
             
@@ -68,8 +69,8 @@ class Goals
             {
                 throw new FormatException("Goal value does not exist");
             }
-            if (!_goals[goalNumber - 1].GetComplete()){
-                int earned = _goals[goalNumber - 1].RecordEvent();
+            if (!_goals[goalAccomplished - 1].GetComplete()){
+                int earned = _goals[goalAccomplished - 1].RecordEvent();
                 _points += earned;
                 Console.WriteLine(
                     $"""

@@ -25,6 +25,6 @@ class EternalGoal : BaseGoal
 
     public override string GetConsoleString()
     {
-        return $"{base.GetConsoleString()} Times Completed: {_timesCompleted}";
+        return $"{base.GetConsoleString()} -- Times Completed: {_timesCompleted}";
     }
 }
