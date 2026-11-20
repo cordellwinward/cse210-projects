@@ -59,6 +59,13 @@ class Goals
                     newGoal = new ChecklistGoal();
                     break;
                 }
+            case 4:
+                {
+                    // To exceed the requirements I added the StreakGoal class
+                    // Streak Goal
+                    newGoal = new StreakGoal();
+                    break;
+                }
             
         }
         if (newGoal != null)
@@ -152,6 +159,16 @@ class Goals
                     int bonusPoints = int.Parse(values[7].Trim());
                     _goals.Add(new ChecklistGoal(name, description, points, complete, timesCompleted, 
                         neededCompletions, bonusPoints));
+                    break;
+                }
+                case "StreakGoal":
+                {
+                    int totalCompletions = int.Parse(values[5].Trim());
+                    int Streak = int.Parse(values[6].Trim());
+                    int LongestStreak = int.Parse(values[7].Trim());
+                    int bonusPoints = int.Parse(values[8].Trim());
+                    _goals.Add(new StreakGoal(name, description, points, complete, totalCompletions, 
+                        Streak, LongestStreak, bonusPoints));
                     break;
                 }
             }

@@ -41,7 +41,7 @@ class ChecklistGoal : BaseGoal
 
     private void SetBonusPoints()
     {
-        Console.Write($"How many Bonus points for Completing your {base.GetName()} goal {_neededCompletions} times: ");
+        Console.Write($"How many Bonus points for completing your {base.GetName()} goal {_neededCompletions} times: ");
         _bonusPoints = int.Parse(Console.ReadLine());
     }
 

@@ -19,10 +19,11 @@ class Menu
     {
         Console.Write(
         """
-        The Types of GOals are:
+        The Types of Goals are:
             1. Simple Goal
             2. Eternal Goal
             3. Checklist Goal
+            4. Streak Goal
         Which type of goal would you like to create?  
         """);
          return int.Parse(Console.ReadLine());
