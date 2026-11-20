@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Markup;
 
 class Goals
 {
@@ -88,6 +90,62 @@ class Goals
         catch (FormatException)
         {
             Console.WriteLine("Event was not recorded. No goal number matching your input exists");
+        }
+    }
+
+    public void WriteGoalsToFile()
+    {
+        Console.WriteLine("What would you like to call your save? (Do not include a file extension, i.e .txt)");
+        string filename = $"{Console.ReadLine().Trim()}.txt";
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(_points);
+            foreach(BaseGoal g in _goals)
+            {
+                outputFile.WriteLine(g.FormatGoalForSave());
+            }
+        }
+    }
+
+    public void LoadGoals()
+    {
+        Console.WriteLine("What saved file would you like to load? (Do not include a file extension, i.e .txt)");
+        string filename = $"{Console.ReadLine().Trim()}.txt";
+        List<string> lines = new List<string>(System.IO.File.ReadAllLines(filename));
+        _points = int.Parse(lines[0]);
+        lines.RemoveAt(0);
+        _goals.Clear();
+        foreach (string line in lines)
+        {
+            string[] values = line.Split(",");
+            string className = values[0].Trim();
+            string name = values[1].Trim();
+            string description = values[2].Trim();
+            int points = int.Parse(values[3].Trim());
+            bool complete = values[4].Trim().ToLower() == "true";
+            switch (className)
+            {
+                case "SimpleGoal":
+                {
+                    _goals.Add(new SimpleGoal(name, description, points, complete));
+                    break;
+                }
+                case "EternalGoal":
+                {
+                    int timesCompleted = int.Parse(values[5].Trim());
+                    _goals.Add(new EternalGoal(name, description, points, complete, timesCompleted));
+                    break;
+                }
+                case "ChecklistGoal":
+                {
+                    int timesCompleted = int.Parse(values[5].Trim());
+                    int neededCompletions = int.Parse(values[6].Trim());
+                    int bonusPoints = int.Parse(values[6].Trim());
+                    _goals.Add(new ChecklistGoal(name, description, points, complete, timesCompleted, 
+                        neededCompletions, bonusPoints));
+                    break;
+                }
+            }
         }
     }
 }

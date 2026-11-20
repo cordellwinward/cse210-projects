@@ -27,4 +27,9 @@ class EternalGoal : BaseGoal
     {
         return $"{base.GetConsoleString()} -- Times Completed: {_timesCompleted}";
     }
+
+    public override string FormatGoalForSave()
+    {
+        return $"{base.FormatGoalForSave()},{_timesCompleted}";
+    }
 }

@@ -85,7 +85,12 @@ class ChecklistGoal : BaseGoal
 
     public override string GetConsoleString()
     {
-        return $"{base.GetConsoleString()} -- Currently Completed: {_timesCompleted}/{_neededCompletions}";
+        return $"{base.GetConsoleString()} Bonus Points: {_bonusPoints} -- Currently Completed: {_timesCompleted}/{_neededCompletions}";
+    }
+
+    public override string FormatGoalForSave()
+    {
+        return $"{base.FormatGoalForSave()},{_timesCompleted},{_neededCompletions},{_bonusPoints}";
     }
 
 }

@@ -62,7 +62,7 @@ abstract class BaseGoal
         {
             completeString = "X";
         }
-        return $"{_goalType} [{completeString}] Goal Name: {_name} Description: {_description} Points: {_points}";
+        return $"[{completeString}] {_name} ({_description}) Points: {_points}";
     }
 
     public int MarkComplete()
@@ -72,4 +72,9 @@ abstract class BaseGoal
     }
     
     public abstract int RecordEvent();
+
+    public virtual string FormatGoalForSave()
+    {
+        return $"{_goalType},{_name},{_description},{_points},{_complete}";
+    }
 }

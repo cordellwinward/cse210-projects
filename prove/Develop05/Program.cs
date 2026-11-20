@@ -40,13 +40,13 @@ class Program
                 case 3:
                     {
                         // Save Goals
-                        
+                        goals.WriteGoalsToFile();
                         break;
                     }
                 case 4:
                     {
                         // Load Goals
-
+                        goals.LoadGoals();
                         break;
                     }
                 case 5:
