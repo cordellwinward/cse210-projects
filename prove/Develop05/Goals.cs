@@ -15,9 +15,18 @@ class Goals
 
     public void DisplayGoals()
     {
-        foreach (BaseGoal g in _goals)
+        if (_goals.Count == 0)
         {
-            Console.WriteLine(g.GetConsoleString());
+            Console.WriteLine("You have no recorded goals");
+        }
+        else if (_goals.Count > 0)
+        {
+            Console.WriteLine("Your goals are:");
+            
+            foreach (BaseGoal g in _goals)
+            {
+                Console.WriteLine(g.GetConsoleString());
+            }
         }
     }
 
@@ -140,7 +149,7 @@ class Goals
                 {
                     int timesCompleted = int.Parse(values[5].Trim());
                     int neededCompletions = int.Parse(values[6].Trim());
-                    int bonusPoints = int.Parse(values[6].Trim());
+                    int bonusPoints = int.Parse(values[7].Trim());
                     _goals.Add(new ChecklistGoal(name, description, points, complete, timesCompleted, 
                         neededCompletions, bonusPoints));
                     break;

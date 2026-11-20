@@ -16,8 +16,6 @@ class ChecklistGoal : BaseGoal
         base(name, description, points, complete, "ChecklistGoal")
     {
         _bonusPoints = bonusPoints;
-        bool timesCompletedDefaultSet = false;
-        bool neededCompletionsDefaultSet = false;
         if (timesCompleted >= 0)
         {
             _timesCompleted = timesCompleted;
@@ -25,27 +23,19 @@ class ChecklistGoal : BaseGoal
         else
         {
             _timesCompleted = 0;
-            timesCompletedDefaultSet = true;
         }
-        if (neededCompletions >= 1 && neededCompletions <= _timesCompleted)
+
+        if (neededCompletions >= 1 && neededCompletions >= _timesCompleted)
         {
             _neededCompletions = neededCompletions;
         }
         else
         {
             _neededCompletions = timesCompleted + 1;
-            timesCompletedDefaultSet = true;
         }
-        if (complete == true && neededCompletions != timesCompleted)
+        if (complete)
         {
-            if (!timesCompletedDefaultSet || neededCompletionsDefaultSet)
-            {
-                _neededCompletions = timesCompleted;
-            }
-            else
-            {
-                _timesCompleted = _neededCompletions;
-            }
+            _neededCompletions = _timesCompleted;
         }
     }
 
@@ -57,7 +47,7 @@ class ChecklistGoal : BaseGoal
 
     private void SetNeededCompletions()
     {
-        Console.Write($"How many times do you need to complete {base.GetName()} goal: ");
+        Console.Write($"How many times do you need to complete your {base.GetName()} goal: ");
         int neededCompletionsInput = int.Parse(Console.ReadLine());
         if (neededCompletionsInput > 0)
         {
@@ -69,6 +59,7 @@ class ChecklistGoal : BaseGoal
         }
     }
 
+    
     public override int RecordEvent()
     {
         ++_timesCompleted;
